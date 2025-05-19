@@ -1,0 +1,33 @@
+{% extends './plantilla.html' %}
+{% block contenido %}
+
+<div class="row">
+    <div class="col-md-3"></div>
+    <div class="col-md-6 bg-light">
+        <h1>Nuevo Cargo</h1>
+        <form action="guardarCargo" method="post">
+            {% csrf_token %}
+            <label for="">Nombre:</label><br>
+            <input class="form-control" type="text" name="nombre" id="nombre"> <br> <br>
+            <label for="">Funciones:</label><br>
+            <input class="form-control" type="text" name="funciones" id="funciones"> <br> <br>
+            <label for="">Horario:</label><br>
+            <input class="form-control" type="text" name="horario" id="horario"> <br> <br>
+            <label for="">Requisitos:</label> <br>
+            <textarea class="form-control" name="requisitos" id="requisitos" rows="5"></textarea> <br> <br>
+            <label for="">Sueldo:</label><br>
+            <input class="form-control" type="text" name="sueldo" id="sueldo"> <br> <br>
+            <button
+            class="btn btn-success"
+            type="submit">Guardar</button>
+            <a 
+            class="btn btn-outline-danger"
+            href="/">Cancelar</a>
+        </form>
+        <br>
+    </div>
+    <div class="col-md-3"></div>
+</div>
+
+
+{% endblock %}

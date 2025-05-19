@@ -1,0 +1,38 @@
+{% extends './plantilla.html' %}
+{% block contenido %}
+
+<div class="row">
+    <div class="col-md-3"></div>
+    <div class="col-md-6 bg-light">
+        <h1>Editar Cargo</h1>
+        <form action="/procesarEdicionCargo" method="post">
+            {% csrf_token %}
+            <input type="hidden" name="id" value="{{cargoEditar.id}}">
+            <label for="">Nombre:</label><br>
+            <input class="form-control" type="text" name="nombre" id="nombre" value="{{cargoEditar.nombre}}"> <br> <br>
+            <label for="">Funciones:</label><br>
+            <input class="form-control" type="text" name="funciones" id="funciones" value="{{cargoEditar.funciones}}"> <br> <br>
+            <label for="">Horario:</label><br>
+            <input class="form-control" type="text" name="horario" id="horario" value="{{cargoEditar.horario}}"> <br> <br>
+            <label for="">Requisitos:</label> <br>
+            <textarea class="form-control" name="requisitos" id="requisitos" rows="5">{{ cargoEditar.requisitos }}</textarea> <br><br>
+            <input class="form-control" type="text" name="sueldo" id="sueldo" value="{{cargoEditar.sueldo}}"> <br> <br>
+            <button
+            class="btn btn-warning"
+            type="submit"> <i class="fa fa-pen"></i>
+            Editar
+            </button>
+
+            <a 
+            class="btn btn-outline-danger"
+            href="/"> <i class="fa fa-times"></i>
+            Cancelar
+        </a>
+        </form>
+        <br>
+    </div>
+    <div class="col-md-3"></div>
+</div>
+
+
+{% endblock %}
