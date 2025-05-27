@@ -5,18 +5,23 @@
     <div class="col-md-3"></div>
     <div class="col-md-6 bg-light">
         <h1>Nuevo Cargo</h1>
-        <form action="guardarCargo" method="post">
+        <form action="guardarCargo" id="frm_nuevo_cargo" enctype="multipart/form-data" method="post">
             {% csrf_token %}
             <label for="">Nombre:</label><br>
-            <input class="form-control" type="text" name="nombre" id="nombre"> <br> <br>
+            <input placeholder="Ingrese el nombre de Cargo" class="form-control" type="text" name="nombre" id="nombre"> <br> <br>
             <label for="">Funciones:</label><br>
-            <input class="form-control" type="text" name="funciones" id="funciones"> <br> <br>
+            <input placeholder="Ingrese el nombre de la Funcion" class="form-control" type="text" name="funciones" id="funciones"> <br> <br>
             <label for="">Horario:</label><br>
-            <input class="form-control" type="text" name="horario" id="horario"> <br> <br>
+            <input placeholder="Ingrese el Horario" class="form-control" type="text" name="horario" id="horario"> <br> <br>
             <label for="">Requisitos:</label> <br>
-            <textarea class="form-control" name="requisitos" id="requisitos" rows="5"></textarea> <br> <br>
+            <textarea placeholder="Ingrese los Requisitos necesarios" class="form-control" name="requisitos" id="requisitos" rows="5"></textarea> <br> <br>
             <label for="">Sueldo:</label><br>
-            <input class="form-control" type="text" name="sueldo" id="sueldo"> <br> <br>
+            <input placeholder="Ingrese el valor del sueldo" class="form-control" type="text" name="sueldo" id="sueldo"> <br> <br>
+            
+            <label for="">Logotipo</label>
+            <input type="file" name="logo" id="logo" class="form-control"> <br>
+            
+            
             <button
             class="btn btn-success"
             type="submit">Guardar</button>
@@ -30,4 +35,60 @@
 </div>
 
 
+<!-- Embeber codigo javascript/jquery dentro del HTML -->
+
+<script>
+    $("#frm_nuevo_cargo").validate({
+        rules:{
+            "nombre":{
+                required:true,
+                minlength:5, // cuenta caracteres
+                maxlength:20 // cuenta caracteres
+            },
+            "funciones":{
+                required:true
+            },
+            "horario":{
+                required:true
+            },
+            "requisitos":{
+                required:true
+            },
+            "sueldo":{
+                required:true,
+                number:true,
+                min: 200, //entidades numericas
+                max: 5000.
+
+            }
+
+        },
+        messages:{
+            "nombre":{
+                required:"Este campo es obligatorio",
+                minlength:"Ingrese 5 letras",
+                maxlength:"Ingrese menos de 5 letras"
+            },
+            "funciones":{
+                required:"Este campo es obligatorio"
+            },
+            "horario":{
+                required:"Este campo es obligatorio"
+            },
+            "requisitos":{
+                required:"Este campo es obligatorio"
+            },
+            "sueldo":{
+                required:"Este campo es obligatorio",
+                number:"Este campo es obligatorio",
+                min: "Ingresar minimo mas de 200 $",
+                max: "Ingresar maximo 5000 $"
+
+            }
+
+        }
+    });
+</script>
+
 {% endblock %}
+

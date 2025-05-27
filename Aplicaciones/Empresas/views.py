@@ -18,8 +18,12 @@ def guardarCargo(request):
     horario=request.POST["horario"]    
     requisitos=request.POST["requisitos"]    
     sueldo=request.POST["sueldo"]  
+
+    #subiendo archivo
+    logoSubido=request.FILES.get("logo")
+
     nuevoCargo=Cargo.objects.create(nombre=nombre,funciones=funciones,
-        horario=horario,requisitos=requisitos,sueldo=sueldo)
+        horario=horario,requisitos=requisitos,sueldo=sueldo, logo=logoSubido)
     
     #Mensaje de confirmacion
     messages.success(request,"Cargo GUARDADO exitosamente")

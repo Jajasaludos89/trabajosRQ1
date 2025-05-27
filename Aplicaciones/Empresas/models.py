@@ -8,6 +8,10 @@ class Cargo(models.Model):
     horario=models.CharField(max_length=500)
     requisitos=models.TextField()
     sueldo=models.DecimalField(max_digits=10,decimal_places=2)
+
+    
+    logo=models.FileField(upload_to='cargo', null=True, blank=True)
+
     #para visualizar los datos de mejor manera
     def __str__(self):
         fila="{0}: {1} {2} {3}"
